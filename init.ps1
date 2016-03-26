@@ -23,6 +23,11 @@ if (!$solution) {
 	Replace("Lisa.Skeleton.Api", $project) |
 	Set-Content "$solution.sln"
 
+# Change the namespace in the code files.
+(Get-Content Lisa.Skeleton.Api\Startup.cs).
+	Replace("Lisa.Skeleton.Api", $project) |
+	Set-Content "Lisa.Skeleton.Api\Startup.cs"
+
 # Rename the project folder.	
 Rename-Item -Path ".\Lisa.Skeleton.Api" -NewName ".\$project"
 
